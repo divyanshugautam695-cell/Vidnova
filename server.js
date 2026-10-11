@@ -9,7 +9,8 @@ const { chromium } = require("playwright");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const MAX_SCAN_BYTES = 3 * 1024 * 1024;
-const MAX_DOWNLOAD_BYTES = 200 * 1024 * 1024;
+const MAX_DOWNLOAD_MB = Math.min(10240, Math.max(200, Number(process.env.MAX_DOWNLOAD_MB) || 2048));
+const MAX_DOWNLOAD_BYTES = MAX_DOWNLOAD_MB * 1024 * 1024;
 app.disable("x-powered-by");
 app.use(express.json({ limit: "32kb" }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -159,7 +160,7 @@ app.get("/api/download", async (req, res) => {
     if (!raw) return res.status(400).send("Missing media URL.");
     const { response, finalUrl } = await safeGet(raw, { responseType: "stream", timeout: 20000, maxContentLength: MAX_DOWNLOAD_BYTES, accept: "video/*,application/octet-stream,*/*;q=0.5" });
     const length = Number(response.headers["content-length"] || 0);
-    if (length > MAX_DOWNLOAD_BYTES) { response.data.destroy(); return res.status(413).send("File exceeds the 200 MiB limit."); }
+    if (length > MAX_DOWNLOAD_BYTES) { response.data.destroy(); return res.status(413).send("File exceeds the configured " + MAX_DOWNLOAD_MB + " MiB download limit."); }
     const pathname = new URL(finalUrl).pathname;
     let filename = pathname.split("/").pop() || "vidnova-media";
     filename = filename.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-100) || "vidnova-media";
