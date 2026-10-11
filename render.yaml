@@ -4,9 +4,9 @@ services:
     runtime: docker
     plan: free
     healthCheckPath: /api/health
-    autoDeployTrigger: off
+    autoDeployTrigger: commit
     envVars:
       - key: NODE_ENV
         value: production
       - key: MAX_DOWNLOAD_MB
-        value: "2048"
+        value: "10240"
