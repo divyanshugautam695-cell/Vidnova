@@ -165,6 +165,11 @@ app.get("/api/download", async (req, res) => {
     let filename = pathname.split("/").pop() || "vidnova-media";
     filename = filename.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-100) || "vidnova-media";
     res.setHeader("Content-Type", response.headers["content-type"] || "application/octet-stream");
+    // Preserve the upstream size when provided so Chrome can show download progress as X/Y.
+    const upstreamLength = Number(response.headers["content-length"] || 0);
+    if (Number.isSafeInteger(upstreamLength) && upstreamLength > 0 && upstreamLength <= MAX_DOWNLOAD_BYTES) {
+      res.setHeader("Content-Length", String(upstreamLength));
+    }
     res.setHeader("Content-Disposition", 'attachment; filename="' + filename.replace(/"/g, "") + '"');
     res.setHeader("X-Content-Type-Options", "nosniff");
     let total = 0;
