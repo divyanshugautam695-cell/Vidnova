@@ -1,0 +1,14 @@
+{
+  "id": "/",
+  "name": "VidNova — Video Toolkit",
+  "short_name": "VidNova",
+  "description": "Mobile-friendly video source detector for media you are authorized to save.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08090c",
+  "theme_color": "#090a0d",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
