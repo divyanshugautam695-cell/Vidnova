@@ -32,8 +32,12 @@ Open `http://localhost:3000`.
 - Mobile-first dark/silver interface and installable PWA shell
 - Static page scan and best-effort Playwright Smart Scan
 - Browser preview with open-in-new-tab fallback
-- Direct media download endpoint, limited to 200 MiB
+- Direct media download endpoint, default limit 2 GiB (configurable with MAX_DOWNLOAD_MB; maximum 10 GiB)
 - Basic URL/DNS validation, redirect limits, and per-IP rate limiting
+
+## Download size
+
+The default maximum download size is 2048 MiB (2 GiB). Set the `MAX_DOWNLOAD_MB` environment variable on the hosting service to change it, up to 10240 MiB (10 GiB). Your hosting provider may impose its own response-duration, bandwidth, or resource limits, so very large downloads can still be interrupted.
 
 ## Limitations and responsible use
 
