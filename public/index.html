@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090a0d"><meta name="description" content="VidNova detects accessible video sources on public webpages.">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<title>VidNova — Video Toolkit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"><span class="mark">▶</span><span>VID<span class="silver">NOVA</span><small>MEDIA TOOLKIT</small></span></a><span class="status"><i></i> MOBILE EDITION</span><button id="install-app" class="install" hidden>Install</button></header>
+<main>
+<section class="hero"><div class="eyebrow">YOUR MEDIA, WITH PERMISSION</div><h1>Video, <span class="silver">unlocked.</span></h1><p>Find accessible video sources, preview pages, and save media you have permission to download.</p></section>
+<section class="panel">
+<div class="panel-head"><div><h2>01 / Detect sources</h2><p>Paste a public webpage or direct media URL.</p></div></div>
+<form id="scan-form"><label for="url-input">WEBSITE URL</label><input id="url-input" type="url" placeholder="https://example.com/video" autocomplete="url" required><div class="button-row"><button id="scan-btn" class="primary" type="submit">Scan page</button><button id="smart-scan" class="secondary" type="button">✦ Smart Scan</button></div></form>
+<div id="scan-message" class="message" role="status" aria-live="polite" hidden></div>
+<div class="results-head"><h3>Detected sources <span id="result-count">0</span></h3></div>
+<div id="results" class="results"><div class="empty"><div class="play">▶</div><strong>Nothing scanned yet</strong><span>Paste a URL above to begin.</span></div></div>
+<p class="legal">Only download media you own or are authorized to save. This tool does not bypass DRM, logins, or access controls.</p>
+</section>
+<section class="panel browser-panel"><div class="panel-head"><div><h2>02 / Built-in browser</h2><p>Some websites block embedded previews.</p></div></div>
+<form id="browse-form" class="browse-form"><input id="browse-input" type="url" placeholder="https://example.com" aria-label="Browser URL" required><button class="secondary" type="submit">Open</button></form>
+<div class="browser-tools"><span id="browser-host">Browser preview</span><button id="open-tab" class="text-button" type="button" disabled>Open in new tab ↗</button><button id="scan-browser" class="text-button" type="button" disabled>Scan this page</button></div>
+<div class="frame-wrap"><div id="browser-placeholder" class="placeholder">Enter a website URL above to preview it here.</div><iframe id="browser-frame" title="Website preview" sandbox="allow-forms allow-scripts allow-same-origin allow-popups" referrerpolicy="no-referrer" hidden></iframe></div>
+</section>
+<section id="how-it-works" class="footnote"><h2>How it works</h2><p>Scan checks public page metadata and video tags. Smart Scan opens a controlled browser to look for media requests. Results vary by website; segmented streams may not be a single playable file.</p></section>
+</main>
+<footer>VIDNOVA <span>•</span> BUILT FOR THE MOBILE WEB</footer>
+<script src="/app.js" defer></script>
+</body></html>
