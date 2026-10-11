@@ -1,15 +1,19 @@
 # VidNova — Mobile Chrome Edition
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/divyanshugautam695-cell/Vidnova)
+
 VidNova is a mobile-friendly web app for finding direct video sources on public webpages and downloading media you are authorized to save.
 
-## Deploy to use on Android Chrome
+## Deploy for Android Chrome
 
-This app requires a Node.js backend, so GitHub Pages alone cannot run its scanner or download API. The repository includes a Dockerfile and Render Blueprint (`render.yaml`).
+1. Tap the **Deploy to Render** button above, or open [this deployment page](https://render.com/deploy?repo=https://github.com/divyanshugautam695-cell/Vidnova).
+2. Sign in to Render and connect GitHub if asked.
+3. Review the Blueprint service settings and tap **Apply** to start deployment.
+4. Wait for the build to finish. Render will provide an HTTPS address ending in `.onrender.com`.
+5. Open that address in Chrome on your phone.
+6. In Chrome, open **⋮ → Add to Home screen** (or **Install app**, if offered).
 
-1. Open the repository on GitHub and choose **Deploy to Render** / create a new Blueprint from the repo at Render.
-2. Review the service settings and deploy. Browser installation can take several minutes.
-3. When Render provides the HTTPS URL, open it in Chrome on your phone.
-4. In Chrome, tap **⋮ → Add to Home screen** to create a shortcut.
+The first build installs Chromium and may take several minutes. Free hosting may sleep when idle and take a little time to wake up. I cannot create the Render service or accept account permissions on your behalf.
 
 ## Run locally
 
